@@ -9,7 +9,7 @@
 		"lint": "eslint . --ext .ts",
 		"lint:fix": "eslint . --ext .ts --fix",
 		"fix": "npm run lint:fix && npm run format",
-		"dev": "nodemon --exec ts-node src/index.ts",
+		"dev": "nodemon",
 		"start": "node dist/index.js"
 	},
 	"keywords": [],

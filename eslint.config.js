@@ -10,7 +10,7 @@ import promisePlugin from 'eslint-plugin-promise';
 
 export default [
 	{
-		ignores: ['**/dist/**'],
+		ignores: ['**/dist/**', '**/enums/**'],
 	},
 	js.configs.recommended,
 	{
@@ -36,7 +36,7 @@ export default [
 			'node/no-unsupported-features/es-syntax': 'off',
 			'promise/always-return': 'warn',
 			'no-console': 'off',
-			'no-undef': 'off',
+			"no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
 		},
 		settings: {
 			'import/resolver': {
