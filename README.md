@@ -1,1 +1,1 @@
-Template for express typescript project
+Learning design patterns using express typescript project
