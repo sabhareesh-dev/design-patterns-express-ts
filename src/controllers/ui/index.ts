@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import UiService from '../../services/ui/index.js';
+import { Component } from '../../enums/ui/index.js';
 
-export const getButton = (req: Request, res: Response) => {
+export const getUi = (req: Request, res: Response) => {
+	const { component } = req.params;
 	const { platform, theme } = req.query;
 
 	if (!platform || !theme) {
@@ -9,7 +11,11 @@ export const getButton = (req: Request, res: Response) => {
 	}
 
 	const uiService = new UiService();
-	const button = uiService.createButton(platform as string, theme as string);
+	const button = uiService.createUi(
+		component as Component,
+		platform as string,
+		theme as string,
+	);
 
 	res.json(button.render());
 };

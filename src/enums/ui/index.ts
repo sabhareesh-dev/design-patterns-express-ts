@@ -7,3 +7,8 @@ export enum Theme {
 	LIGHT = 'light',
 	DARK = 'dark',
 }
+
+export enum Component {
+	INPUT = 'input',
+	BUTTON = 'button',
+}

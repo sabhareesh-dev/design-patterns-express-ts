@@ -1,8 +1,8 @@
 import express from 'express';
-import { getButton } from '../../controllers/ui/index.js';
+import { getUi } from '../../controllers/ui/index.js';
 
 const uiRoute = express.Router();
 
-uiRoute.get('/button', getButton);
+uiRoute.get('/:component', getUi);
 
 export default uiRoute;
