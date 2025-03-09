@@ -1,7 +1,8 @@
+import ApiError from '../../components/error/error.js';
+import DarkButtonMobile from '../../components/ui/mobile/button/dark-button.js';
+import LightButtonMobile from '../../components/ui/mobile/button/light-button.js';
 import DarkInputMobile from '../../components/ui/mobile/input/dark-input.js';
 import LightInputMobile from '../../components/ui/mobile/input/light-input.js';
-import DarkButtonWeb from '../../components/ui/web/button/dark-button.js';
-import LightButtonWeb from '../../components/ui/web/button/light-button.js';
 import { Theme } from '../../enums/ui/index.js';
 import Input from '../../interfaces/ui/input.js';
 import UiFactory from './ui-factory.js';
@@ -10,11 +11,16 @@ export default class MobileFactory implements UiFactory {
 	createButton(theme: string) {
 		switch (theme) {
 			case Theme.LIGHT:
-				return new LightButtonWeb();
+				return new LightButtonMobile();
 			case Theme.DARK:
-				return new DarkButtonWeb();
+				return new DarkButtonMobile();
 			default:
-				throw new Error('Unknown theme');
+				throw ApiError.getBuilder()
+					.setStatus(400)
+					.setMessage(`Unknown theme: ${theme}`)
+					.setStack()
+					.setTimestamp()
+					.build();
 		}
 	}
 	createInput(theme: string): Input {
@@ -24,7 +30,12 @@ export default class MobileFactory implements UiFactory {
 			case Theme.DARK:
 				return new DarkInputMobile();
 			default:
-				throw new Error('Unknown theme');
+				throw ApiError.getBuilder()
+					.setStatus(400)
+					.setMessage(`Unknown theme: ${theme}`)
+					.setStack()
+					.setTimestamp()
+					.build();
 		}
 	}
 }

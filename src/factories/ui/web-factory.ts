@@ -1,3 +1,4 @@
+import ApiError from '../../components/error/error.js';
 import DarkButtonWeb from '../../components/ui/web/button/dark-button.js';
 import LightButtonWeb from '../../components/ui/web/button/light-button.js';
 import DarkInputWeb from '../../components/ui/web/input/dark-input.js';
@@ -15,7 +16,12 @@ export default class WebFactory extends UiFactory {
 			case Theme.DARK:
 				return new DarkButtonWeb();
 			default:
-				throw new Error('Unknown theme');
+				throw ApiError.getBuilder()
+					.setStatus(400)
+					.setMessage('Unknown theme')
+					.setStack()
+					.setTimestamp()
+					.build();
 		}
 	}
 	createInput(theme: string): Input {
@@ -25,7 +31,12 @@ export default class WebFactory extends UiFactory {
 			case Theme.DARK:
 				return new DarkInputWeb();
 			default:
-				throw new Error('Unknown theme');
+				throw ApiError.getBuilder()
+					.setStatus(400)
+					.setMessage('Unknown theme')
+					.setStack()
+					.setTimestamp()
+					.build();
 		}
 	}
 }
