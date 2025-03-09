@@ -10,6 +10,6 @@ export default class DarkInputMobile implements Input {
 		return this.value;
 	}
 	render(): string {
-		return 'Rendering Dark input mobile';
+		return 'Rendering dark input mobile';
 	}
 }

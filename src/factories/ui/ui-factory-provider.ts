@@ -1,3 +1,4 @@
+import ApiError from '../../components/error/error.js';
 import { Platform } from '../../enums/ui/index.js';
 import MobileFactory from './mobile-factory.js';
 import UiFactory from './ui-factory.js';
@@ -11,7 +12,12 @@ export default class UiFactoryProvider {
 			case Platform.MOBILE:
 				return new MobileFactory();
 			default:
-				throw new Error('Unknown platform');
+				throw ApiError.getBuilder()
+					.setStatus(400)
+					.setMessage(`Unknown platform: ${platform}`)
+					.setStack()
+					.setTimestamp()
+					.build();
 		}
 	}
 }
