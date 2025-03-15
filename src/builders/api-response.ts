@@ -6,7 +6,6 @@ export default class ApiResponseBuilder {
 	constructor() {
 		this.response = {
 			status: 200,
-			message: '',
 			format: 'JSON',
 		};
 	}

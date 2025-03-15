@@ -15,6 +15,7 @@ export const getUi = (req: Request, res: Response, next: NextFunction) => {
 				.setStatus(400)
 				.setMessage('Platform and theme params are required')
 				.setTimestamp()
+				.setStack()
 				.build(),
 		);
 	}

@@ -9,15 +9,15 @@ export const errorHandler = (
 ) => {
 	if (err instanceof ApiError) {
 		res.status(err.status).json(err.toJSON());
+	} else {
+		const genericError = ApiError.getBuilder()
+			.setStatus(500)
+			.setMessage(
+				err instanceof Error ? err.message : 'unknown error occurred',
+			)
+			.setStack(err instanceof Error ? err.stack : '')
+			.setTimestamp()
+			.build();
+		res.status(genericError.status).json(genericError);
 	}
-
-	const genericError = ApiError.getBuilder()
-		.setStatus(500)
-		.setMessage(
-			err instanceof Error ? err.message : 'unknown error occurred',
-		)
-		.setStack(err instanceof Error ? err.stack : '')
-		.setTimestamp()
-		.build();
-	res.status(genericError.status).json(genericError);
 };

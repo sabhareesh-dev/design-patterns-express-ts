@@ -1,6 +1,6 @@
 export default interface ApiResponse {
 	status: number;
-	message: string;
+	message?: string;
 	data?: any;
 	error?: string;
 	metadata?: {
